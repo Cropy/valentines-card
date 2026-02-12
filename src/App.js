@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import thinkingPenguin from "./thinking_penguin.png";
+import thinkingPenguin from "./assets/thinking_penguin.png";
 
 function App() {
   const [response, setResponse] = useState("");
