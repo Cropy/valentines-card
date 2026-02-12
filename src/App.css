@@ -1,58 +1,105 @@
 body {
   margin: 0;
-  font-family: 'Dancing Script', cursive;
   background-color: #ffe6f0;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  position: relative; /* Needed for absolute positioning */
 }
 
 .container {
-  padding: 20px;
+  padding: 48px;
 }
 
 .card {
   background: #fff;
-  border-radius: 15px;
-  padding: 20px;
-  max-width: 400px;
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 680px;
   width: 100%;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
   text-align: center;
 }
 
-.dog-img {
+.penguin-img {
+  display: block;
   width: 100%;
-  border-radius: 10px;
+  max-width: 520px;
+  height: auto;
+  max-height: 520px;
+  object-fit: contain;
+  border-radius: 12px;
+  margin: 0 auto 18px;
 }
 
 .message {
-  font-size: 1.5em;
-  margin: 20px 0;
+  font-size: 2.2em;
+  margin: 24px 0;
   color: #cc0055;
 }
 
 .buttons {
   display: flex;
+  margin-top: 22px;
   justify-content: center;
-  gap: 10px;
+  gap: 16px;
   flex-wrap: wrap;
 }
 
 button {
   border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 1em;
+  padding: 18px 36px;
+  border-radius: 12px;
+  font-size: 1.25rem;
+  font-family: inherit;
   cursor: pointer;
-  flex: 1;
+  flex: 0 1 auto;
   background-color: #ffcce0;
   color: #660033;
+  min-width: 160px;
+  box-shadow: 0 4px 10px rgba(102, 0, 51, 0.12);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(102, 0, 51, 0.16);
+}
+
+button.yes, button.maybe {
+  padding: 18px 40px;
+  font-size: 1.3rem;
 }
 
 .response {
-  margin-top: 15px;
+  margin-top: 20px;
   font-weight: bold;
   color: #333;
+  font-size: 1.15em;
+}
+
+.penguin {
+  position: absolute;
+  font-size: 6rem; /* larger penguin icons */
+}
+
+.top-left {
+  top: 10px;
+  left: 10px;
+}
+
+.top-right {
+  top: 10px;
+  right: 10px;
+}
+
+.bottom-left {
+  bottom: 10px;
+  left: 10px;
+}
+
+.bottom-right {
+  bottom: 10px;
+  right: 10px;
 }
