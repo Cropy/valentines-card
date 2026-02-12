@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import "./App.css";
 import thinkingPenguin from "./assets/thinking_penguin.png";
+import holdingPenguins from "./assets/holding_penguins.png";
 
 function App() {
   const [noClicks, setNoClicks] = useState(0);
   const [showNo, setShowNo] = useState(true);
   const [noHiding, setNoHiding] = useState(false);
+  const [accepted, setAccepted] = useState(false);
 
-  // Clicking Yes simply hides the No button (no selection message)
+  // Clicking Yes shows the accepted message + image
   const handleYesClick = () => {
-    setShowNo(false);
+    setAccepted(true);
   };
 
   const handleNoClick = () => {
@@ -36,6 +38,13 @@ function App() {
       <span className="penguin bottom-right">🐧</span>
 
       <div className="card">
+        {accepted ? (
+          <div className="accepted">
+            <p className="message">Yay — I'm yours! 💕</p>
+            <img src={holdingPenguins} alt="Holding Penguins" className="holding-img" />
+          </div>
+        ) : (
+        <>
         <p className="message">Nicooool, will you be my Valentine?</p>
         <img src={thinkingPenguin} alt="Thinking Penguin" className="penguin-img"/>
         <div className="buttons">
@@ -64,6 +73,8 @@ function App() {
             </button>
           )}
         </div>
+        </>
+        )}
       </div>
     </div>
   );

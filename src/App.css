@@ -34,6 +34,15 @@ body {
   margin: 0 auto 36px; /* increase bottom spacing so buttons don't overlap when scaled */
 }
 
+.holding-img {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  border-radius: 12px;
+  margin: 18px auto 0;
+}
+
 .message {
   font-size: 2.2em;
   margin: 24px 0;
