@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/valentines-card/static/css/main.729bfae6.css",
+    "main.js": "/valentines-card/static/js/main.8e03339c.js",
+    "static/media/thinking_penguin.png": "/valentines-card/static/media/thinking_penguin.31f940fffe21140fd547.png",
+    "static/media/holding_penguins.png": "/valentines-card/static/media/holding_penguins.ae26f4be4df667177a9d.png",
+    "index.html": "/valentines-card/index.html",
+    "main.729bfae6.css.map": "/valentines-card/static/css/main.729bfae6.css.map",
+    "main.8e03339c.js.map": "/valentines-card/static/js/main.8e03339c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.729bfae6.css",
+    "static/js/main.8e03339c.js"
+  ]
+}
