@@ -15,11 +15,12 @@ body {
 .card {
   background: #fff;
   border-radius: 20px;
-  padding: 40px;
+  padding: 40px 40px 80px; /* extra bottom padding so scaled Yes button fits */
   max-width: 680px;
   width: 100%;
   box-shadow: 0 6px 18px rgba(0,0,0,0.12);
   text-align: center;
+  overflow: hidden; /* keep scaled buttons inside the card */
 }
 
 .penguin-img {
@@ -30,7 +31,7 @@ body {
   max-height: 520px;
   object-fit: contain;
   border-radius: 12px;
-  margin: 0 auto 18px;
+  margin: 0 auto 36px; /* increase bottom spacing so buttons don't overlap when scaled */
 }
 
 .message {
@@ -45,6 +46,7 @@ body {
   justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
+  align-items: center; /* keep buttons vertically centered so scaling expands upward */
 }
 
 button {
@@ -59,7 +61,11 @@ button {
   color: #660033;
   min-width: 160px;
   box-shadow: 0 4px 10px rgba(102, 0, 51, 0.12);
-  transition: transform 120ms ease, box-shadow 120ms ease;
+  transition: transform 120ms ease, box-shadow 120ms ease, padding 180ms ease, font-size 180ms ease, min-width 180ms ease;
+}
+
+.yes {
+  z-index: 2;
 }
 
 button:hover {
@@ -70,6 +76,20 @@ button:hover {
 button.yes, button.maybe {
   padding: 18px 40px;
   font-size: 1.3rem;
+}
+
+.maybe.hiding {
+  /* fade and collapse horizontally while keeping element in flow */
+  opacity: 0;
+  transform: translateY(-6px) scale(0.9);
+  transition: opacity 300ms ease, transform 300ms ease, width 300ms ease, padding 300ms ease, margin 300ms ease;
+  width: 0;
+  min-width: 0;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
+  pointer-events: none;
 }
 
 .response {

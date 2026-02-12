@@ -3,10 +3,28 @@ import "./App.css";
 import thinkingPenguin from "./assets/thinking_penguin.png";
 
 function App() {
-  const [response, setResponse] = useState("");
+  const [noClicks, setNoClicks] = useState(0);
+  const [showNo, setShowNo] = useState(true);
+  const [noHiding, setNoHiding] = useState(false);
 
-  const handleResponse = (answer) => {
-    setResponse(`You chose: ${answer}`);
+  // Clicking Yes simply hides the No button (no selection message)
+  const handleYesClick = () => {
+    setShowNo(false);
+  };
+
+  const handleNoClick = () => {
+    setNoClicks((c) => {
+      const next = c + 1;
+      if (next >= 4) {
+        // start hide animation, then remove from DOM after animation
+        setNoHiding(true);
+        setTimeout(() => {
+          setShowNo(false);
+          setNoHiding(false);
+        }, 300);
+      }
+      return next;
+    });
   };
 
   return (
@@ -21,14 +39,31 @@ function App() {
         <p className="message">Nicooool, will you be my Valentine?</p>
         <img src={thinkingPenguin} alt="Thinking Penguin" className="penguin-img"/>
         <div className="buttons">
-          <button className="yes" onClick={() => handleResponse("Absolutely 💕")}>
-            Absolutely 💕
-          </button>
-          <button className="maybe" onClick={() => handleResponse("Noo... 😢")}>
-            Noo... 😢
-          </button>
+          {/** scale yes button based on number of No clicks */}
+          {(() => {
+            const scale = Math.min(1 + noClicks * 0.25, 2.2); // cap scale to avoid excessive growth
+            const paddingV = 18 * scale;
+            const paddingH = 36 * scale;
+            const fontSize = 1.25 * scale;
+            const minWidth = 160 * scale;
+            return (
+              <button
+                className="yes"
+                onClick={handleYesClick}
+                style={{ padding: `${paddingV}px ${paddingH}px`, fontSize: `${fontSize}rem`, minWidth: `${minWidth}px` }}
+              >
+                Absolutely 💕
+              </button>
+            );
+          })()}
+
+          {/** keep No button in DOM while fading */}
+          {showNo && (
+            <button className={`maybe ${noHiding ? 'hiding' : ''}`} onClick={handleNoClick}>
+              Noo... 😢
+            </button>
+          )}
         </div>
-        <p className="response">{response}</p>
       </div>
     </div>
   );
